@@ -1,0 +1,82 @@
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.obj
+*.pdb
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+
+# Click-Once directory
+publish/
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
+
+node_modules/
+
+# angular-cli generated
+# compiled output
+/dist
+/tmp
+/out-tsc
+/.angular
+/.angular/cache/*
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.vs
+.project
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+/.vs/Demo/FileContentIndex
+/angularapp/.angular/cache/*
+# sqlite
+*.db
+sqlite.*
