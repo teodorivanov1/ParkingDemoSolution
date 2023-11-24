@@ -1,6 +1,5 @@
 using Demo.WebApi.Application;
 using Demo.WebApi.Infrastructure;
-using Demo.WebApi.ServiceHost.Authorization;
 using Demo.WebApi.ServiceHost.Extensions;
 using Demo.WebApi.ServiceHost.Midlewares.ErrorHandlers;
 
@@ -15,19 +14,17 @@ public partial class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
 
-        builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
-        builder.Services.ConfigureSwaggerApiSequrity();
-        builder.Services.ConfigureJwtAuthentication();
+        builder.Services.ConfigureSwagger();
 
         builder.Services.ConfigureApplication();
         builder.Services.ConfigureInfrastructure(builder.Configuration);
-        builder.Services.AddCustomIdentity();
 
         var app = builder.Build();
 
-        app.InitializeDb();
+        // DO NOT use auto-migrate in production-ready app
+        app.ApplyDbMigrations();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
@@ -37,7 +34,6 @@ public partial class Program
         }
 
         app.AddBoilerplate();
-
         app.UseMiddleware<ErrorHandlerMiddleware>();
 
         app.Run();

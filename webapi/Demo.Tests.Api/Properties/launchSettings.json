@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Demo.Tests.Api": {
-      "commandName": "Project",
-      "workingDirectory": "..\\Demo.WebApi.ServiceHost"
-    }
-  }
-}

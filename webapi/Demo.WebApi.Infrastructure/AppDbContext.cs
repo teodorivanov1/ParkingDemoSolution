@@ -1,12 +1,11 @@
 ﻿using Demo.WebApi.Core.Entities;
 using Demo.WebApi.Infrastructure.Mapping;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Demo.WebApi.Infrastructure
 {
-    public class AppDbContext : IdentityDbContext<AppUser>
+    public class AppDbContext : DbContext
     {
         private readonly IConfiguration configuration;
         public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration)

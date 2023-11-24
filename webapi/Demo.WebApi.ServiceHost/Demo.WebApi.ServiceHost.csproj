@@ -15,9 +15,7 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-	<ItemGroup>
-		<InternalsVisibleTo Include="..\Demo.Tests.ApiTests\Demo.Tests.ApiTests.csproj" />
-	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\Demo.WebApi.Application\Demo.WebApi.Application.csproj" />
     <ProjectReference Include="..\Demo.WebApi.Infrastructure\Demo.WebApi.Infrastructure.csproj" />
