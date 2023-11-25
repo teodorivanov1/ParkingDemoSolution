@@ -1,4 +1,4 @@
-﻿using Demo.WebApi.Core.Entities;
+﻿using Demo.WebApi.Core.Abstraction;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

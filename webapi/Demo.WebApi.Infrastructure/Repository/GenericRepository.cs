@@ -1,13 +1,11 @@
 ﻿using Demo.WebApi.Application.Abstractions;
 using Demo.WebApi.Application.Abstractions.Pagination;
-using Demo.WebApi.Core.Entities;
+using Demo.WebApi.Core.Abstraction;
 using Demo.WebApi.Infrastructure.Extenstions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.WebApi.Infrastructure.Repository
 {
-    // It might be a good idea in the future to add CancellationToken as a parameter to every async method.
-    // Not all methods are needed.
     public class GenericRepository<T> : IGenericRepository<T> where T : Entity
     {
         private readonly AppDbContext dbContext;
@@ -46,10 +44,10 @@ namespace Demo.WebApi.Infrastructure.Repository
             return entity;
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
-            await SaveAsync();
+            return await SaveAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -57,24 +55,23 @@ namespace Demo.WebApi.Infrastructure.Repository
             return await dbContext
                  .Set<T>()
                  .ToListAsync();
-
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var e = await dbContext.Set<T>().Where(x => x.Id == id).SingleAsync();
 
             if (e != null)
             {
                 dbContext.Set<T>().Remove(e);
-                await SaveAsync();
+                return await SaveAsync();
             }
+            else { return false; }
         }
 
-        private async Task SaveAsync()
+        private async Task<bool> SaveAsync()
         {
-            await dbContext.SaveChangesAsync();
+            return await dbContext.SaveChangesAsync() > 0;
         }
-
     }
 }

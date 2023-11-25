@@ -1,5 +1,4 @@
-﻿using Demo.WebApi.Core.Entities;
-using Demo.WebApi.Infrastructure.Mapping;
+﻿using Demo.WebApi.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -20,12 +19,14 @@ namespace Demo.WebApi.Infrastructure
             optionsBuilder.UseSqlite(connection);
         }
 
-        public DbSet<ParkingSpot> ParkingSpots { get; set; }
+        public DbSet<ClientsMap> Clients { get; set; }
+        public DbSet<AddressesMap> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             ArgumentNullException.ThrowIfNull(nameof(builder));
-            builder.ApplyConfiguration(new ParkingSpotMap());
+            builder.ApplyConfiguration(new ClientsMap());
+            builder.ApplyConfiguration(new AddressesMap());
 
             base.OnModelCreating(builder);
         }

@@ -1,8 +1,9 @@
 ﻿@using Demo.WebApi.Application.Abstractions.Pagination;
 @using Demo.WebApi.Core.Entities;
+@using Demo.WebApi.Core.Entities.Clients;
 @using Demo.WebApi.ServiceHost.Views.Shared.Components;
 @using Microsoft.OpenApi.Extensions;
-@model PagedResult<ParkingSpot>
+@model PagedResult<Client>
 @{
     var title = "Parked vehicles";
     ViewData["Title"] = title;
@@ -14,25 +15,15 @@
             <thead>
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="text-center">Plate Number</th>
-                    <th class="text-center">Vehicle</th>
-                    <th class="text-center">Entry Date/Time</th>
-                    <th class="text-center">Discount</th>
-                    <th class="text-center">Rate<br />(Hourly/Daly) BNG</th>
-                    <th class="text-center">Total<br />(Hours/BGN)</th>
+                    <th class="text-center">Name</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var vehicle in Model.Results)
+                @foreach (var client in Model.Results)
                 {
                     <tr>
-                        <td>@vehicle.Id</td>
-                        <td>@vehicle.Plate</td>
-                        <td>@vehicle.VehicleType.GetDisplayName()</td>
-                        <td>@vehicle.EntryAt</td>
-                        <td>@vehicle.DiscountType.GetDisplayName()</td>
-                        <td>@vehicle.Rate.Hourly (BGN) / @vehicle.Rate.Daily (BGN)</td>
-                        <td>@vehicle.TotalHours (h) / @vehicle.TotalMoney (BGN)</td>
+                        <td>@client.Id</td>
+                        <td>@client.Name</td>
                     </tr>
                 }
             </tbody>

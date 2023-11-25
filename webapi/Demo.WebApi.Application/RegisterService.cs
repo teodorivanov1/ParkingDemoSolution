@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Demo.WebApi.Application.Mapping;
 using Demo.WebApi.Application.Pipelines;
-using Demo.WebApi.Core.Abstraction;
-using Demo.WebApi.Core.Entities;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,10 +16,12 @@ namespace Demo.WebApi.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton(provider => new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new ApplicationProfile(
-                    provider.CreateScope()
-                    .ServiceProvider.GetService<ICoreValidator<ParkingSpot>>()!));
+                //    cfg.AddProfile(new ApplicationProfile(
+                //        provider.CreateScope()
+                //        .ServiceProvider.GetService<ICoreValidator<ParkingSpot>>()!));
+                cfg.AddProfile(new ApplicationProfile());
             }).CreateMapper());
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }

@@ -9,7 +9,7 @@ namespace Demo.WebApi.Application.Abstractions
         Task<PagedResult<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
         Task<T> AddAsync(T entity);
         Task<IEnumerable<T>> AddAsync(IEnumerable<T> entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
+        Task<bool> UpdateAsync(T entity);
+        Task<bool> DeleteAsync(int id);
     }
 }

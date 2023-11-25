@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Demo.WebApi.Common\Demo.WebApi.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Clients\Rules\" />
+    <Folder Include="Entities\Addresses\Rules\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
