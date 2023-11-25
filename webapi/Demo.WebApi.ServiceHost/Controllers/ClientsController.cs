@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.WebApi.ServiceHost.Controllers
 {
     [ApiController]
-    public class ClientController : BaseApiController
+    public class ClientsController : BaseApiController
     {
         [HttpPost]
         public async Task<IActionResult> AddClient(AddClientCommand command)

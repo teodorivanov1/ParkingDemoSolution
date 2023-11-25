@@ -5,10 +5,10 @@ namespace Demo.WebApi.Application.Features.Clients.Commands
 {
     public class UpdateCommand : IRequest<Response<bool>>
     {
-        public UpdateCommand(int tiket)
+        public UpdateCommand(int id)
         {
-            Tiket = tiket;
+            Id = id;
         }
-        public int Tiket { get; set; }
+        public int Id { get; set; }
     }
 }

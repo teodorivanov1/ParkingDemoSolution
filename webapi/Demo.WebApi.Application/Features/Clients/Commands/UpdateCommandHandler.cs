@@ -6,15 +6,15 @@ namespace Demo.WebApi.Application.Features.Clients.Commands
 {
     public class UpdateCommandHandler : BaseInitialization, IRequestHandler<UpdateCommand, Response<bool>>
     {
-        public UpdateCommandHandler(IClientsRepository parkingSpotsRepository)
-            : base(parkingSpotsRepository)
+        public UpdateCommandHandler(IClientsRepository clientsRepository)
+            : base(clientsRepository)
         {
 
         }
 
         public async Task<Response<bool>> Handle(UpdateCommand request, CancellationToken cancellationToken)
         {
-            await _clientsRepository.DeleteAsync(request.Tiket);
+            await _clientsRepository.DeleteAsync(request.Id);
 
             // we are here, not exception (but still bad solution here it is appropriate to use event rater than command)
             // we just need to fire and forget ...

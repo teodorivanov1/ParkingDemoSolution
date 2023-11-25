@@ -1,4 +1,6 @@
-﻿using Demo.WebApi.Infrastructure.Mapping;
+﻿using Demo.WebApi.Core.Entities.Addresses;
+using Demo.WebApi.Core.Entities.Clients;
+using Demo.WebApi.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -19,8 +21,8 @@ namespace Demo.WebApi.Infrastructure
             optionsBuilder.UseSqlite(connection);
         }
 
-        public DbSet<ClientsMap> Clients { get; set; }
-        public DbSet<AddressesMap> Addresses { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
