@@ -3,12 +3,12 @@ using MediatR;
 
 namespace Demo.WebApi.Application.Pipelines
 {
-    public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class FluientValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> validators;
 
-        public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+        public FluientValidatorBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
             this.validators = validators;
         }

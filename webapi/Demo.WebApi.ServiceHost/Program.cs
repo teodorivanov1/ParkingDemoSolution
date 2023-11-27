@@ -1,5 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Demo.WebApi.Application;
 using Demo.WebApi.Infrastructure;
+using Demo.WebApi.ServiceHost;
 using Demo.WebApi.ServiceHost.Extensions;
 using Demo.WebApi.ServiceHost.Midlewares.ErrorHandlers;
 
@@ -8,6 +11,9 @@ public partial class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+            .ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacModule()));
         builder.Services.AddRazorPages();
         builder.Services.AddControllersWithViews();
 

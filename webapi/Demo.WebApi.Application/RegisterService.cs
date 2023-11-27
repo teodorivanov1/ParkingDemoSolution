@@ -23,7 +23,8 @@ namespace Demo.WebApi.Application
             }).CreateMapper());
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluientValidatorBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(DataIntegrityBehavior<,>));
         }
     }
 }
